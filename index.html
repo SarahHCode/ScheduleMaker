@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Maker</title>
+    <style>
+        body {
+            font-family: Arial;
+            color:rgb(44, 44, 42);
+            background-color: #CAD1F4;
+        }
+        .flex-container {
+            background-color: #DBF3F7;
+        }
+        table {
+            border-collapse:collapse;
+            width: 100%;
+            margin: 3px;
+            border-bottom: 1px solid #DBF3F7;
+        }
+        tr {
+            border-bottom: 0.05em solid #B3B3B3;
+        }
+        .hour {
+            color: #5e5e5e;
+        }
+        .upcomingEvents {
+            background-color: #EEEEEE;
+        }
+        .dailyToDos {
+            background-color: #F9F9F9;
+        }
+        #theWeather {
+            position:absolute;
+            top:1em;
+            right:1em;
+        }
+        button {
+            background-color: #ccaabb;
+            color: rgb(237, 237, 237);
+            border-radius: 2px;
+            border-color: #ccaabb;
+        }
+        button:hover {
+            background-color: #d1b934;
+        }
+        .extremities {
+            border-bottom: 0.05em solid #F5A4A4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Copied from YouTube -->
+    <!-- <label for="firstText">first name:</label>
+    <input id="firstText"><br>
+    <label for="lastText">last name:</label>
+    <input id="lastText"><br>
+    <button id="submitBtn">submit</button>
+    <button id="cookieBtn">get cookies</button> -->
+    <!-- Copied from YouTube -->
+
+    <h1>Schedule Maker</h1>
+    <h4 id="theWeather">Now <span id="weather"></span></h4>
+
+    <label for="activity">Type an <i><u>activity</u></i> here → </label>
+    <input type="text" id="activity">
+    <label for="hour">Type an <i><u>hour</u></i> here → </label>
+    <input type="text" id="hour">
+    <button onclick="addActivity()">Click here to activity</button>
+
+    <table class="flex-container">
+        <tr class="extremities"><th style="width:5%">Hour</th><th>Activity</th></tr>
+        <tr><td class="hour">1</td><td class="scheduleTextField" id="1"></td></tr>
+        <tr><td class="hour">2</td><td class="scheduleTextField" id="2"></td></tr>
+        <tr><td class="hour">3</td><td class="scheduleTextField" id="3"></td></tr>
+        <tr><td class="hour">4</td><td class="scheduleTextField" id="4"></td></tr>
+        <tr><td class="hour">5</td><td class="scheduleTextField" id="5"></td></tr>
+        <tr><td class="hour">6</td><td class="scheduleTextField" id="6"></td></tr>
+        <tr><td class="hour">7</td><td class="scheduleTextField" id="7"></td></tr>
+        <tr><td class="hour">8</td><td class="scheduleTextField" id="8"></td></tr>
+        <tr><td class="hour">9</td><td class="scheduleTextField" id="9"></td></tr>
+        <tr><td class="hour">10</td><td class="scheduleTextField" id="10"></td></tr>
+        <tr><td class="hour">11</td><td class="scheduleTextField" id="11"></td></tr>
+        <tr><td class="hour">12</td><td class="scheduleTextField" id="12"></td></tr>
+        <tr><td class="hour">13</td><td class="scheduleTextField" id="13"></td></tr>
+        <tr><td class="hour">14</td><td class="scheduleTextField" id="14"></td></tr>
+        <tr><td class="hour">15</td><td class="scheduleTextField" id="15"></td></tr>
+        <tr><td class="hour">16</td><td class="scheduleTextField" id="16"></td></tr>
+        <tr><td class="hour">17</td><td class="scheduleTextField" id="17"></td></tr>
+        <tr><td class="hour">18</td><td class="scheduleTextField" id="18"></td></tr>
+        <tr><td class="hour">19</td><td class="scheduleTextField" id="19"></td></tr>
+        <tr><td class="hour">20</td><td class="scheduleTextField" id="20"></td></tr>
+        <tr><td class="hour">21</td><td class="scheduleTextField" id="21"></td></tr>
+        <tr><td class="hour">22</td><td class="scheduleTextField" id="22"></td></tr>
+        <tr><td class="hour">23</td><td class="scheduleTextField" id="23"></td></tr>
+        <tr class="extremities"><td class="hour">24</td><td class="scheduleTextField" id="24"></td></tr>
+        <tr><td><br></td></tr>
+    </table><br>
+
+<h4>Double click on an element in any list and then double click on a line in the schedule to put the element in the schedule.</h4>
+
+    <div class="upcomingEvents">
+    <h3>Upcoming events</h3>
+    <label for="event">Type the <i><u>event</u></i> you want to add : </label>
+    <input type="text" id="event"> <br>
+    <!-- Old thing not using anymore
+    <label for="chosenHour">Chose the hour in the schedule: </label>
+    <select id="chosenHour" size="3">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+        <option value="21">21</option>
+        <option value="22">22</option>
+        <option value="23">23</option>
+        <option value="24">24</option>
+    </select> -->
+    <button onclick="addUpcomingEventToUpcomingEventsList();">Add upcoming event</button>
+        <ul id="upcomingEvents">
+        </ul>
+    </div>
+
+    <div class="dailyToDos">
+    <h3>Daily to-dos</h3>
+    <label for="todo">Type the <i><u>to-do</u></i> you want to add : </label>
+    <input type="text" id="todo"> <br>
+    <button onclick="addTodoToTodoList();">Add to-do</button>
+        <ul id="dailyToDos">
+        </ul>
+    </div>
+
+    <p id="demo"></p>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
